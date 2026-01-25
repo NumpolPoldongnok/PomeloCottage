@@ -13,13 +13,15 @@ export const SITE_CONFIG = {
 // =============================================
 // Images - เปลี่ยน path รูปภาพได้ที่นี่
 // =============================================
+const basePath = import.meta.env.BASE_URL
+
 export const IMAGES = {
-  logo: '/images/logo.jpg',
-  hero: '/images/pomelo-garden.jpg',
-  blueHouse: '/images/blue-house.jpg',
-  pomeloFruit: '/images/pomelo-fruit.jpg',
-  riverView: '/images/river-view.jpg',
-  pomeloGarden: '/images/pomelo-garden.jpg',
+  logo: `${basePath}images/logo.jpg`,
+  hero: `${basePath}images/pomelo-garden.jpg`,
+  blueHouse: `${basePath}images/blue-house.jpg`,
+  pomeloFruit: `${basePath}images/pomelo-fruit.jpg`,
+  riverView: `${basePath}images/river-view.jpg`,
+  pomeloGarden: `${basePath}images/pomelo-garden.jpg`,
 }
 
 // =============================================
@@ -32,12 +34,12 @@ export interface GalleryImage {
 }
 
 export const GALLERY_IMAGES: GalleryImage[] = [
-  { src: '/images/blue-house.jpg', alt: 'บ้านสีฟ้า', category: 'house' },
-  { src: '/images/pomelo-garden.jpg', alt: 'สวนส้มโอ', category: 'garden' },
-  { src: '/images/pomelo-fruit.jpg', alt: 'ผลส้มโอ', category: 'garden' },
-  { src: '/images/river-view.jpg', alt: 'วิวริมน้ำ', category: 'nature' },
-  { src: '/images/pomelo-garden.jpg', alt: 'บรรยากาศสวน', category: 'atmosphere' },
-  { src: '/images/blue-house.jpg', alt: 'ที่พักบ้านสีฟ้า', category: 'house' },
+  { src: `${basePath}images/blue-house.jpg`, alt: 'บ้านสีฟ้า', category: 'house' },
+  { src: `${basePath}images/pomelo-garden.jpg`, alt: 'สวนส้มโอ', category: 'garden' },
+  { src: `${basePath}images/pomelo-fruit.jpg`, alt: 'ผลส้มโอ', category: 'garden' },
+  { src: `${basePath}images/river-view.jpg`, alt: 'วิวริมน้ำ', category: 'nature' },
+  { src: `${basePath}images/pomelo-garden.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/blue-house.jpg`, alt: 'ที่พักบ้านสีฟ้า', category: 'house' },
 ]
 
 export const GALLERY_CATEGORIES = [
@@ -77,7 +79,7 @@ export const AMENITIES = [
 // Contact Information
 // =============================================
 export const CONTACT_INFO = {
-  phone: '081-234-5678',
+  phone: '065-496-5695',
   lineId: '@pomelocottage',
   lineUrl: 'https://line.me/ti/p/@pomelocottage',
   facebook: 'Pomelo Cottage บ้านสวนส้มโอ',
