@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CONTACT_INFO, SITE_CONFIG } from '../constants'
+import { CONTACT_INFO } from '../constants'
 </script>
 
 <template>
@@ -106,7 +106,7 @@ import { CONTACT_INFO, SITE_CONFIG } from '../constants'
           <iframe
             :src="CONTACT_INFO.googleMapEmbed"
             class="w-full h-full border-0"
-            allowfullscreen=""
+            allowfullscreen
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>

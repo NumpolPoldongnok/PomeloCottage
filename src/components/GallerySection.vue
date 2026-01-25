@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { GALLERY_IMAGES, GALLERY_CATEGORIES, GalleryImage } from '../constants'
+import { GALLERY_IMAGES, GALLERY_CATEGORIES } from '../constants'
+import type { GalleryImage } from '../constants'
 
 const activeCategory = ref('all')
 const selectedImage = ref<GalleryImage | null>(null)
