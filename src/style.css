@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   Pomelo Cottage - Custom Styles
+   ============================================= */
+
+* {
+  font-family: 'Kanit', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8E7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5BA4C9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A90A4;
+}
+
+/* Section transitions */
+section {
+  @apply transition-all duration-500;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-pomelo-orange text-white px-6 py-3 rounded-full font-medium 
+         transition-all duration-300 hover:bg-warm-orange hover:shadow-lg 
+         hover:-translate-y-1 active:translate-y-0;
+}
+
+.btn-secondary {
+  @apply bg-ocean-blue text-white px-6 py-3 rounded-full font-medium 
+         transition-all duration-300 hover:bg-deep-blue hover:shadow-lg 
+         hover:-translate-y-1 active:translate-y-0;
+}
+
+.btn-outline {
+  @apply border-2 border-pomelo-orange text-pomelo-orange px-6 py-3 rounded-full font-medium 
+         transition-all duration-300 hover:bg-pomelo-orange hover:text-white 
+         hover:-translate-y-1 active:translate-y-0;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+}
+
+/* Glass effect */
+.glass {
+  @apply bg-white/80 backdrop-blur-md;
+}
+
+/* Gradient backgrounds */
+.gradient-blue {
+  background: linear-gradient(135deg, #87CEEB 0%, #5BA4C9 100%);
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, #7CB342 0%, #4CAF50 100%);
+}
+
+.gradient-orange {
+  background: linear-gradient(135deg, #FFB74D 0%, #FF9800 100%);
+}
+
+/* Hero overlay */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* Custom animations */
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slowZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Modal backdrop */
+.modal-backdrop {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center;
+}
+
+/* Modal content */
+.modal-content {
+  @apply bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 max-h-[90vh] overflow-auto;
+}
+
+/* Gallery image hover */
+.gallery-item {
+  @apply relative overflow-hidden rounded-xl cursor-pointer;
+}
+
+.gallery-item img {
+  @apply transition-transform duration-500 hover:scale-110;
+}
+
+.gallery-item::after {
+  content: '';
+  @apply absolute inset-0 bg-black/0 transition-all duration-300;
+}
+
+.gallery-item:hover::after {
+  @apply bg-black/20;
+}
+
+/* Icon styling */
+.icon-box {
+  @apply w-12 h-12 rounded-xl flex items-center justify-center text-white;
+}
+
+/* Section titles */
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-gray-800 mb-4;
+}
+
+.section-subtitle {
+  @apply text-lg text-gray-600 mb-8;
+}
+
+/* Navigation link active state */
+.nav-link {
+  @apply relative text-gray-700 hover:text-pomelo-orange transition-colors duration-300;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-pomelo-orange transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link.active {
+  @apply text-pomelo-orange;
+}
+
+.nav-link.active::after {
+  @apply w-full;
+}
