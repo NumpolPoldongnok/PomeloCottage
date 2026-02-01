@@ -67,6 +67,18 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   // Nature and pomelo garden
   { src: `${basePath}images/pomelo-garden.jpg`, alt: 'สวนส้มโอ', category: 'nature' },
   { src: `${basePath}images/pomelo-fruit.jpg`, alt: 'ผลส้มโอ', category: 'nature' },
+  
+  // Atmosphere
+  { src: `${basePath}images/20.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/21.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/22.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/23.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/24.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/25.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/26.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/27.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/28.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
+  { src: `${basePath}images/29.jpg`, alt: 'บรรยากาศสวน', category: 'atmosphere' },
 ]
 
 export const GALLERY_CATEGORIES = [
