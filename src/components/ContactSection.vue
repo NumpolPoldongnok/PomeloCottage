@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CONTACT_INFO } from '../constants'
+import { CONTACT_INFO, NEARBY_ATTRACTIONS, EMERGENCY_SERVICES } from '../constants'
 </script>
 
 <template>
@@ -17,17 +17,27 @@ import { CONTACT_INFO } from '../constants'
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Contact Info -->
         <div class="space-y-6">
-          <!-- Phone -->
-          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover flex items-center gap-4">
-            <div class="w-14 h-14 bg-ocean-blue rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
+          <!-- Phone Numbers -->
+          <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-14 h-14 bg-ocean-blue rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">โทรศัพท์ติดต่อ</p>
+                <p class="font-semibold text-gray-800">{{ CONTACT_INFO.phones[0].name }}</p>
+              </div>
             </div>
-            <div>
-              <p class="text-sm text-gray-500">โทรศัพท์</p>
-              <a :href="`tel:${CONTACT_INFO.phone}`" class="text-xl font-bold text-gray-800 hover:text-ocean-blue transition-colors">
-                {{ CONTACT_INFO.phone }}
+            <div class="space-y-2 ml-[70px]">
+              <a
+                v-for="(phone, index) in CONTACT_INFO.phones"
+                :key="index"
+                :href="`tel:${phone.number}`"
+                class="block text-lg font-bold text-gray-800 hover:text-ocean-blue transition-colors"
+              >
+                {{ phone.number }}
               </a>
             </div>
           </div>
@@ -85,8 +95,9 @@ import { CONTACT_INFO } from '../constants'
               </svg>
             </div>
             <div>
-              <p class="text-sm text-gray-500">ที่อยู่</p>
-              <p class="text-gray-800 font-medium">{{ CONTACT_INFO.address }}</p>
+              <p class="text-sm text-gray-500">ที่ตั้ง</p>
+              <p class="text-gray-800 font-medium mb-1">{{ CONTACT_INFO.location }}</p>
+              <p class="text-sm text-gray-600">{{ CONTACT_INFO.address }}</p>
               <a
                 :href="CONTACT_INFO.googleMapUrl"
                 target="_blank"
@@ -110,6 +121,86 @@ import { CONTACT_INFO } from '../constants'
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
+        </div>
+      </div>
+
+      <!-- Nearby Attractions & Emergency Services -->
+      <div class="mt-16 grid md:grid-cols-2 gap-8">
+        <!-- Nearby Attractions -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-nature-green rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">สถานที่ท่องเที่ยวใกล้เคียง</h3>
+          </div>
+          <ul class="space-y-3">
+            <li
+              v-for="(attraction, index) in NEARBY_ATTRACTIONS"
+              :key="index"
+              class="flex items-center justify-between gap-3"
+            >
+              <div class="flex items-start gap-3 flex-1">
+                <svg class="w-5 h-5 text-nature-green flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span class="text-gray-700">{{ attraction.name }}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sm text-ocean-blue font-medium whitespace-nowrap">{{ attraction.distance }}</span>
+                <a
+                  :href="attraction.mapUrl"
+                  target="_blank"
+                  class="text-pomelo-orange hover:text-deep-blue transition-colors"
+                  title="ดูแผนที่"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Emergency Services -->
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">หน่วยงานฉุกเฉิน</h3>
+          </div>
+          <ul class="space-y-4">
+            <li
+              v-for="(service, index) in EMERGENCY_SERVICES"
+              :key="index"
+              class="bg-gray-50 rounded-lg p-4"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3 flex-1">
+                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <div>
+                    <p class="font-semibold text-gray-800">{{ service.name }}</p>
+                    <a 
+                      :href="`tel:${service.phone}`"
+                      class="text-red-600 hover:text-red-700 font-medium text-lg"
+                    >
+                      {{ service.phone }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

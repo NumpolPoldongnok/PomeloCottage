@@ -37,21 +37,6 @@ const getIconSvg = (icon: string) => {
           <!-- Decorative Elements -->
           <div class="absolute -top-4 -left-4 w-24 h-24 bg-pomelo-orange/20 rounded-full blur-2xl"></div>
           <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-nature-green/20 rounded-full blur-2xl"></div>
-          
-          <!-- Floating Badge -->
-          <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-4 z-20">
-            <div class="flex items-center gap-3">
-              <div class="w-14 h-14 bg-pomelo-orange rounded-xl flex items-center justify-center">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                </svg>
-              </div>
-              <div>
-                <p class="font-bold text-gray-800">Welcome Drink</p>
-                <p class="text-sm text-gray-600">น้ำส้มโอสดคั้น</p>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- Text Side -->
@@ -59,14 +44,9 @@ const getIconSvg = (icon: string) => {
           <p class="text-gray-600 text-lg leading-relaxed">
             {{ ABOUT_CONTENT.description }}
           </p>
-          
-          <p class="text-gray-600 leading-relaxed">
-            ทุกครั้งที่คุณมาเยือน เราจะต้อนรับด้วย <span class="text-pomelo-orange font-semibold">น้ำส้มโอสดคั้น</span> 
-            จากสวนของเราเอง หวานฉ่ำ สดชื่น เป็นการเริ่มต้นวันพักผ่อนที่ดีที่สุด
-          </p>
 
           <!-- Highlights -->
-          <div class="grid sm:grid-cols-3 gap-4 mt-8">
+          <div class="grid sm:grid-cols-2 gap-4 mt-8">
             <div
               v-for="(highlight, index) in ABOUT_CONTENT.highlights"
               :key="index"
@@ -74,7 +54,7 @@ const getIconSvg = (icon: string) => {
             >
               <div 
                 class="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center"
-                :class="index === 0 ? 'bg-pomelo-orange' : index === 1 ? 'bg-nature-green' : 'bg-ocean-blue'"
+                :class="index === 0 ? 'bg-nature-green' : 'bg-ocean-blue'"
               >
                 <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="getIconSvg(highlight.icon)"></svg>
               </div>
